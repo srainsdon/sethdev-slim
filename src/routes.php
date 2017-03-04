@@ -1,4 +1,5 @@
 <?php
+
 // Routes
 
 $app->get('/[{name}]', function ($request, $response, $args) {
@@ -8,9 +9,13 @@ $app->get('/[{name}]', function ($request, $response, $args) {
     // Render index view
     return $this->renderer->render($response, 'index.phtml', $args);
 });
-$app->get('/hello/{name}', function ( $request,  $response) {
+$app->get('/info', function ( $request, $response) {
     $name = $request->getAttribute('name');
-    $response->getBody()->write("Hello, $name");
+    ob_start();
+    phpinfo();
+    $data = ob_get_contents();
+    ob_clean();
+    $response->getBody()->write($data);
 
     return $response;
 });
