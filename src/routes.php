@@ -15,7 +15,7 @@ $app->get('/info/[{name}]', function ( $request, $response) {
     phpinfo();
     $data = ob_get_contents();
     ob_clean();
-    $response->getBody()->write($data);
+    $response->getBody()->write($data)
 
     return $response;
 });
