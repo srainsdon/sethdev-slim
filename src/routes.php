@@ -2,7 +2,7 @@
 
 // Routes
 
-$routeSettings = $app->routeSettings;
+$routeSettings = $container->routeSettings;
 
 $app->get('/settings',
         function ($request, $response, $args) {
