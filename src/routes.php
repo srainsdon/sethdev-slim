@@ -18,11 +18,11 @@ $app->get('/', function ($request, $response, $args) {
     $app->group('/auth',
             function () {
         $this->map(['GET', 'POST'], '/login',
-                'App\controllers\user_management:login');
+                '\user_management:login');
         $this->map(['GET', 'POST'], '/logout',
-                'App\controllers\user_management:logout');
+                '\user_management:logout');
         $this->map(['GET', 'POST'], '/signup',
-                'App\controllers\user_management:signup');
+                '\user_management:signup');
     });
     
 
