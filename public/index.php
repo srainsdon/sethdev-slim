@@ -12,6 +12,15 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use JeremyKendall\Password\PasswordValidator;
+use JeremyKendall\Slim\Auth\Adapter\Db\PdoAdapter;
+use JeremyKendall\Slim\Auth\Bootstrap;
+use JeremyKendall\Slim\Auth\Exception\HttpForbiddenException;
+use JeremyKendall\Slim\Auth\Exception\HttpUnauthorizedException;
+use Zend\Authentication\Storage\Session as SessionStorage;
+use Zend\Session\Config\SessionConfig;
+use Zend\Session\SessionManager;
+
 spl_autoload_register(function ($classname) {
     require (__DIR__ . '/../src/classes/' . $classname . '.php');
 });
@@ -24,6 +33,7 @@ $settings = require __DIR__ . '/../src/settings.php';
 $app = new \Slim\App($settings);
 
 $container = $app->getContainer();
+
 
 // Logger config
 //$container['logger'] = function($c) {
@@ -51,6 +61,73 @@ $container['routeSettings'] = function ($c) {
     }
     return $urlSettings;
 };
+
+// Configure Slim Auth components
+$validator = new PasswordValidator();
+$adapter = new PdoAdapter($container['db'], 'members', 'username', 'password', $validator);
+$acl = new \Example\Acl();
+$sessionConfig = new SessionConfig();
+$sessionConfig->setOptions(array(
+    'remember_me_seconds' => 60 * 60 * 24 * 7,
+    'name' => 'slim-auth-impl',
+));
+$sessionManager = new SessionManager($sessionConfig);
+$sessionManager->rememberMe();
+$storage = new SessionStorage(null, null, $sessionManager);
+$authBootstrap = new Bootstrap($app, $adapter, $acl);
+$authBootstrap->setStorage($storage);
+$authBootstrap->bootstrap();
+
+// Handle the possible 403 the middleware can throw
+$app->error(function (\Exception $e) use ($app) {
+    if ($e instanceof HttpForbiddenException) {
+        return $app->render('403.twig', array('e' => $e), 403);
+    }
+    if ($e instanceof HttpUnauthorizedException) {
+        return $app->redirectTo('login');
+    }
+    // You should handle other exceptions here, not throw them
+    throw $e;
+});
+
+// Grabbing a few things I want in each view
+$app->hook('slim.before.dispatch', function () use ($app) {
+    $hasIdentity = $app->auth->hasIdentity();
+    $identity = $app->auth->getIdentity();
+    $role = ($hasIdentity) ? $identity['role'] : 'guest';
+    $memberClass = ($role == 'guest') ? 'danger' : 'success';
+    $adminClass = ($role != 'admin') ? 'danger' : 'success';
+    $data = array(
+        'hasIdentity' => $hasIdentity,
+        'role' =>  $role,
+        'identity' => $identity,
+        'memberClass' => $memberClass,
+        'adminClass' => $adminClass,
+    );
+    $app->view->appendData($data);
+});
+$app->container->singleton('log', function () {
+    $log = new \Monolog\Logger('slim-skeleton');
+    $log->pushHandler(new \Monolog\Handler\StreamHandler('../logs/app.log', \Monolog\Logger::DEBUG));
+    return $log;
+});
+
+// Prepare view
+$app->view(new \Slim\Views\Twig());
+$app->view->parserOptions = array(
+    'charset' => 'utf-8',
+    'cache' => realpath('../templates/cache'),
+    'auto_reload' => true,
+    'strict_variables' => false,
+    'autoescape' => true,
+    'debug' => true,
+);
+$app->view->parserExtensions = array(
+    new \Slim\Views\TwigExtension(),
+    new \Twig_Extension_Debug(),
+);
+
+
 
 // Set up dependencies
 require __DIR__ . '/../src/dependencies.php';
