@@ -13,9 +13,9 @@ $app->get('/', function ($request, $response, $args) {
         return $this->renderer->render($response, "index.phtml",
                             ["test" => "test"]);
     });
-$app->group('/v1',
-        function () {
-    $this->group('/auth',
+//$app->group('/v1', });
+
+    $app->group('/auth',
             function () {
         $this->map(['GET', 'POST'], '/login',
                 'App\controllers\user_management:login');
@@ -25,4 +25,4 @@ $app->group('/v1',
                 'App\controllers\user_management:signup');
     });
     
-});
+
