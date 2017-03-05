@@ -12,10 +12,10 @@ and open the template in the editor.
     </head>
     <body>
         <div>
-            <form>
+            <form method="post">
                 Username: <input type="text" name="UserName" /><br />
                 Password: <input type="password" name="Password" /><br />
-                <input type="button" name="submit" value="Login"/><br />
+                <input type="submit" name="submit" value="Login"/><br />
                 <?= htmlspecialchars($ip); ?>
             </form>
         </div>
