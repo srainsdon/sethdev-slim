@@ -8,7 +8,7 @@ use Interop\Container\ContainerInterface;
 class user_management {
 
     protected $container;
-    public $ip;
+    private $ip;
 
     // constructor receives container instance
     public function __construct(ContainerInterface $container) {
@@ -16,8 +16,8 @@ class user_management {
         $this->set_ip_addr();
     }
 
-    function login($request, $response, $args) {
-        var_dump($this->container);
+    public function login($request, $response, $args) {
+        var_dump();
 //        if ($request->isPost()) {
 //            $username = $request->post('UserName');
 //            $password = $request->post('Password');
