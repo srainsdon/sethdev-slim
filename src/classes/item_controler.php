@@ -22,11 +22,11 @@ class item_controler {
 
     function get_item($request, $response, $args) {
         $item_id = (int) $args['id'];
-        $this->logger->addInfo("Item: " . $item_id);
-        $stmt = $this->pdo->query('SELECT * FROM item where itemID = ' . $id);
+        $this->container->logger->addInfo("Item: " . $item_id);
+        $stmt = $this->container->pdo->query('SELECT * FROM item where itemID = ' . $id);
         $item = $stmt->fetch();
-        $this->logger->addInfo($item);
-        return $this->renderer->render($response, 'item.phtml', $item);
+        $this->container->logger->addInfo($item);
+        return $this->container->renderer->render($response, 'item.phtml', $item);
     }
 
 }
