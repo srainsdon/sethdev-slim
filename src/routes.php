@@ -1,7 +1,7 @@
 <?php
 
 // Routes
-var_dump($app->routeSettings);
+var_dump($app->getContainer()->routeSettings);
 $app->get('/settings',
         function ($request, $response, $args) {
     var_dump($this->routeSettings);
