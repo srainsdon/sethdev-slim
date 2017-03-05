@@ -9,3 +9,10 @@ $opt = [
     PDO::ATTR_EMULATE_PREPARES => false,
 ];
 $pdo = new PDO($dsn, $db_creds['username'], $db_creds['password'], $opt);
+
+$urlSettings[];
+$stmt = $pdo->query('SELECT * FROM setting');
+foreach ($stmt as $result)
+{
+    $urlSettings[$result['SettingName']] = $result['SettingValue'];
+}
