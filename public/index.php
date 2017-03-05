@@ -41,7 +41,7 @@ $container['db'] = function ($c) {
 // route config
 $container['routeSettings'] = function ($c) {
     $urlSettings = array();
-    $stmt = $container->db->query('SELECT * FROM setting');
+    $stmt = $c->db->query('SELECT * FROM setting');
     foreach ($stmt as $result) {
         $urlSettings[$result['SettingName']] = $result['SettingValue'];
     }
