@@ -7,7 +7,7 @@ $app->get('/[{name}]', function ($request, $response, $args) {
     $this->logger->info("Slim-Skeleton '/' route");
     $test = "what";
     // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args)
+    return $this->renderer->render($response, 'index.phtml', $args);
 });
 $app->get('/info/[{name}]', function ( $request, $response) {
     $name = $request->getAttribute('name');
