@@ -14,4 +14,4 @@ $app->get('/' . $routeSettings['ItemPage'] . '[{id}]',
     
     // Render index view
     return $this->renderer->render($response, 'item.phtml', $args);
-});
+})->setName('item');
