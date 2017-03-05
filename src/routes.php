@@ -9,7 +9,11 @@ $app->get('/settings',
 
 $app->get('/' . $route_settings['ItemPage'] . '/[{id}]',
         function ($request, $response, $args) {
-     $item['id'] = (int)$args['id'];
+    
+     $item_id = (int)$args['id'];
+     
+     $this->logger->addInfo("Item: " . $item_id);
+     $item = new item_mapper($this->db);
     // Render index view
     return $this->renderer->render($response, 'item.phtml', $item);
 })->setName('item');
