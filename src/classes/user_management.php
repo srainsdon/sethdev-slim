@@ -17,7 +17,7 @@ class user_management {
     }
 
     function login($request, $response, $args) {
-        var_dump($request->method);
+        var_dump($request);
 //        if ($request->isPost()) {
 //            $username = $request->post('UserName');
 //            $password = $request->post('Password');
