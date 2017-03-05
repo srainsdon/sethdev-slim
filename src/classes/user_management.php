@@ -13,7 +13,7 @@ class user_management {
     // constructor receives container instance
     public function __construct(ContainerInterface $container) {
         $this->container = $container;
-        $this->getIpAddr();
+        $this->set_ip_addr();
     }
 
     function login($request, $response, $args) {
@@ -27,8 +27,10 @@ class user_management {
                             ["ip" => $this->ip]);
         }
     }
-
-    function getIpAddr() {
+function get_ip_addr() {
+    return $this->ip;
+}
+    function set_ip_addr() {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {   //check ip from share internet
             $ip = $_SERVER['HTTP_CLIENT_IP'];
         }

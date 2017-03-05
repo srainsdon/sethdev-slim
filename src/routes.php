@@ -11,7 +11,7 @@ $app->get('/' . $route_settings['ItemPage'] . '/{id}',
         \item_controler::class . ':get_item')->setName('item');
 $app->get('/', function ($request, $response, $args) {
         return $this->renderer->render($response, "index.phtml",
-                            ["ip" => \user_management::ip]);
+                            ["ip" => \user_management::get_ip_addr()]);
     });
 $app->group('/v1',
         function () {
