@@ -23,7 +23,7 @@ class user_management {
             var_dump(array($username, $password));
         }
         else {
-            return $this->renderer->render($response, "login.phtml",
+            return $this->container->renderer->render($response, "login.phtml",
                             ["ip" => $this->ip]);
         }
     }
