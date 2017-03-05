@@ -16,8 +16,8 @@ class user_management {
         $this->set_ip_addr();
     }
 
-    function login($request, $response, $args) {
-        var_dump($this->container->request);
+    function login(Psr\Http\Message\ServerRequestInterface $request, $response, $args) {
+        var_dump($request);
 //        if ($request->isPost()) {
 //            $username = $request->post('UserName');
 //            $password = $request->post('Password');
