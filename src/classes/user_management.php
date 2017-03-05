@@ -17,7 +17,7 @@ class user_management {
     }
 
     function login(Psr\Http\Message\ServerRequestInterface $request, $response, $args) {
-        var_dump(json_encode($request->getAttribute('params')));
+        var_dump(json_encode($request->getAttribute('UserName')));
 //        if ($request->isPost()) {
 //            $username = $request->post('UserName');
 //            $password = $request->post('Password');
