@@ -30,7 +30,13 @@ spl_autoload_register(function ($classname) {
 // Instantiate the app
 $settings = require __DIR__ . '/../src/settings.php';
 //$settings['settings']['urlSettings'] = require_once __DIR__ . '/../src/db_settings.php';
-$app = new \Slim\Slim($settings);
+//$app = new \Slim\Slim($settings);
+
+$app = new \Slim\Slim(array(
+    'templates.path' => '../templates',
+    // Debug is set to false to demonstrate custom error handling
+    'debug' => true,
+));
 
 $container = $app->getContainer();
 
