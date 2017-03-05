@@ -127,16 +127,110 @@ $app->view->parserExtensions = array(
     new \Twig_Extension_Debug(),
 );
 
+// Define routes
+$app->get('/', function () use ($app) {
+    $readme = Parsedown::instance()->parse(
+        file_get_contents(dirname(__DIR__) . '/README.md')
+    );
+    $app->render('index.twig', array('readme' => $readme));
+});
 
+$app->get('/member', function () use ($app) {
+    $app->render('member.twig');
+});
+
+$app->get('/admin', function () use ($app) {
+    $app->render('admin.twig');
+});
+
+// Login route MUST be named 'login'
+$app->map('/login', function () use ($app) {
+    $username = null;
+
+    if ($app->request()->isPost()) {
+        $username = $app->request->post('username');
+        $password = $app->request->post('password');
+
+        $result = $app->authenticator->authenticate($username, $password);
+
+        if ($result->isValid()) {
+            $app->redirect('/');
+        } else {
+            $messages = $result->getMessages();
+            $app->flashNow('error', $messages[0]);
+        }
+    }
+
+    $app->render('login.twig', array('username' => $username));
+})->via('GET', 'POST')->name('login');
+
+$app->get('/logout', function () use ($app) {
+    if ($app->auth->hasIdentity()) {
+        $app->auth->clearIdentity();
+    }
+
+    $app->redirect('/');
+});
+
+$app->run();
+
+/**
+ * Creates database table, users and database connection.
+ *
+ * @return \PDO
+ */
+function getDb()
+{
+    $dsn = 'sqlite::memory:';
+    $options = array(
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+    );
+
+    try {
+        $db = new \PDO($dsn, null, null, $options);
+    } catch (\PDOException $e) {
+        die(sprintf('DB connection error: %s', $e->getMessage()));
+    }
+
+    $create = 'CREATE TABLE IF NOT EXISTS [users] ( '
+        . '[id] INTEGER  NOT NULL PRIMARY KEY, '
+        . '[username] VARCHAR(50) NOT NULL, '
+        . '[role] VARCHAR(50) NOT NULL, '
+        . '[password] VARCHAR(255) NULL)';
+
+    $delete = 'DELETE FROM users';
+
+    $member = 'INSERT INTO users (username, role, password) '
+        . "VALUES ('member', 'member', :pass)";
+
+    $admin = 'INSERT INTO users (username, role, password) '
+        . "VALUES ('admin', 'admin', :pass)";
+
+    try {
+        $db->exec($create);
+        $db->exec($delete);
+
+        $member = $db->prepare($member);
+        $member->execute(array('pass' => password_hash('member', PASSWORD_DEFAULT)));
+
+        $admin = $db->prepare($admin);
+        $admin->execute(array('pass' => password_hash('admin', PASSWORD_DEFAULT)));
+    } catch (\PDOException $e) {
+        die(sprintf('DB setup error: %s', $e->getMessage()));
+    }
+
+    return $db;
+}
 
 // Set up dependencies
-require __DIR__ . '/../src/dependencies.php';
+//require __DIR__ . '/../src/dependencies.php';
 
 // Register middleware
-require __DIR__ . '/../src/middleware.php';
+//require __DIR__ . '/../src/middleware.php';
 
 // Register routes
-require __DIR__ . '/../src/routes.php';
+//require __DIR__ . '/../src/routes.php';
 
 // Run app
 $app->run();
