@@ -17,7 +17,7 @@
         "slim/php-view": "^2.0",
         "monolog/monolog": "^1.17",
         "google/auth": "^0.4.0",
-        "jeremykendall/slim-auth": "^1.0.1",
+        "jeremykendall/slim-auth": "dev-slim-3.x",
         "twig/twig": "dev-master",
         "jeremykendall/password-validator": "* 3.0.4"
     },

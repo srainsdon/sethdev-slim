@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8622949fe2941efb3c7b225dbd9e3fe6",
+    "content-hash": "232a90cd28375818591c1e146ec84347",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -384,37 +384,36 @@
         },
         {
             "name": "jeremykendall/slim-auth",
-            "version": "1.0.1",
+            "version": "dev-slim-3.x",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremykendall/slim-auth.git",
-                "reference": "53d80c4236621b3dd79a4a3302b91a6e102fa1eb"
+                "reference": "461f429588c4cf91a6a63482e36bac69b662f3c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremykendall/slim-auth/zipball/53d80c4236621b3dd79a4a3302b91a6e102fa1eb",
-                "reference": "53d80c4236621b3dd79a4a3302b91a6e102fa1eb",
+                "url": "https://api.github.com/repos/jeremykendall/slim-auth/zipball/461f429588c4cf91a6a63482e36bac69b662f3c6",
+                "reference": "461f429588c4cf91a6a63482e36bac69b662f3c6",
                 "shasum": ""
             },
             "require": {
                 "jeremykendall/password-validator": "3.*",
-                "php": ">=5.3.7",
-                "zendframework/zend-authentication": "2.5.1",
-                "zendframework/zend-permissions-acl": "2.5.1",
-                "zendframework/zend-session": "2.5.1"
+                "php": ">=5.5.0",
+                "zendframework/zend-authentication": "2.*",
+                "zendframework/zend-permissions-acl": "2.*",
+                "zendframework/zend-session": "2.*"
             },
             "require-dev": {
                 "jeremykendall/debug-die": "0.0.1.*",
-                "league/phpunit-coverage-listener": "~1.1",
                 "phpunit/phpunit": "4.*",
-                "slim/slim": "^2.4.2"
+                "slim/slim": "^3.0"
             },
             "suggest": {
                 "zendframework/zend-db": "For the Zend\\Authentication\\Adapter\\DbTable adapters."
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "JeremyKendall\\Slim\\Auth\\": "src/"
                 }
             },
@@ -441,7 +440,7 @@
                 "zend",
                 "zf2"
             ],
-            "time": "2016-01-18T16:55:36+00:00"
+            "time": "2016-01-23T15:17:28+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2745,6 +2744,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "jeremykendall/slim-auth": 20,
         "twig/twig": 20
     },
     "prefer-stable": false,
