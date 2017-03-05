@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "6e2d318dc24bf14c01442200c28d9ad5",
+=======
+    "content-hash": "5e16cb7781829836a704bd8767830833",
+>>>>>>> parent of fa82527... User management
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -36,6 +40,7 @@
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
             "time": "2017-02-14T19:40:03+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "firebase/php-jwt",
@@ -441,6 +446,8 @@
                 "zf2"
             ],
             "time": "2016-01-23T15:17:28+00:00"
+=======
+>>>>>>> parent of fa82527... User management
         },
         {
             "name": "monolog/monolog",
@@ -754,6 +761,7 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "react/promise",
@@ -797,6 +805,8 @@
                 "promises"
             ],
             "time": "2016-12-22T14:09:01+00:00"
+=======
+>>>>>>> parent of fa82527... User management
         },
         {
             "name": "slim/php-view",
@@ -916,6 +926,7 @@
                 "router"
             ],
             "time": "2016-12-20T20:30:47+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1430,6 +1441,8 @@
                 "zf2"
             ],
             "time": "2016-04-12T21:17:31+00:00"
+=======
+>>>>>>> parent of fa82527... User management
         }
     ],
     "packages-dev": [
@@ -1736,7 +1749,11 @@
                 "spy",
                 "stub"
             ],
+<<<<<<< HEAD
             "time": "2017-03-02T20:05:34+00:00"
+=======
+            "time": "2016-11-21T14:58:47+00:00"
+>>>>>>> parent of fa82527... User management
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1799,7 +1816,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
             "time": "2017-03-01T09:12:17+00:00"
+=======
+            "time": "2017-02-23T07:38:02+00:00"
+>>>>>>> parent of fa82527... User management
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1936,7 +1957,11 @@
             "keywords": [
                 "timer"
             ],
+<<<<<<< HEAD
             "time": "2017-02-26T11:10:40+00:00"
+=======
+            "time": "2016-05-12T18:03:57+00:00"
+>>>>>>> parent of fa82527... User management
         },
         {
             "name": "phpunit/php-token-stream",
@@ -1985,7 +2010,11 @@
             "keywords": [
                 "tokenizer"
             ],
+<<<<<<< HEAD
             "time": "2017-02-27T10:12:30+00:00"
+=======
+            "time": "2017-02-23T06:14:45+00:00"
+>>>>>>> parent of fa82527... User management
         },
         {
             "name": "phpunit/phpunit",
@@ -2067,7 +2096,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
             "time": "2017-03-02T15:22:43+00:00"
+=======
+            "time": "2017-02-19T07:22:16+00:00"
+>>>>>>> parent of fa82527... User management
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2171,7 +2204,11 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
+<<<<<<< HEAD
             "time": "2017-03-04T06:30:41+00:00"
+=======
+            "time": "2016-02-13T06:45:14+00:00"
+>>>>>>> parent of fa82527... User management
         },
         {
             "name": "sebastian/comparator",
