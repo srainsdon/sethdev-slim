@@ -64,7 +64,7 @@ $container['routeSettings'] = function ($c) {
 
 // Configure Slim Auth components
 $validator = new PasswordValidator();
-$adapter = new PdoAdapter(getDb(), 'members', 'username', 'password', $validator);
+$adapter = new PdoAdapter($container['db'], 'members', 'username', 'password', $validator);
 $acl = new acl();
 $sessionConfig = new SessionConfig();
 $sessionConfig->setOptions(array(
