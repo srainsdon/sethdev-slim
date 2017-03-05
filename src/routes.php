@@ -4,7 +4,7 @@
 $route_settings = $app->getContainer()->routeSettings;
 $app->get('/settings',
         function ($request, $response, $args) {
-    var_dump($route_settings);
+    var_dump($this->routeSettings);
 });
 
 $app->get('/' . $route_settings['ItemPage'] . '/[{id}]',
