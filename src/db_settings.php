@@ -2,7 +2,7 @@
 
 $db_creds = unserialize(getenv('sethdev_DB'));
 
-$dsn = "mysql:host=" . $db_creds['host'] . ";dbname=" . $db_creds['database'] . ";charset=$charset";
+$dsn = "mysql:host=" . $db_creds['host'] . ";dbname=" . $db_creds['database'] . ";charset=utf8";
 $opt = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
