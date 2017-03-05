@@ -1,5 +1,5 @@
 <?php
-
+use Interop\Container\ContainerInterface;
 /**
  * Description of user_management
  *
@@ -11,13 +11,13 @@ class user_management {
     public $ip;
 
     // constructor receives container instance
-    public function __construct(Interop\Container\ContainerInterface $container) {
+    public function __construct(ContainerInterface $container) {
         $this->container = $container;
         $this->set_ip_addr();
     }
 
-    function login(Psr\Http\Message\ServerRequestInterface $request, $response, $args) {
-        var_dump($request->getAttribute('UserName'));
+    function login($request, $response, $args) {
+        var_dump($this->container);
 //        if ($request->isPost()) {
 //            $username = $request->post('UserName');
 //            $password = $request->post('Password');
