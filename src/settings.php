@@ -22,6 +22,6 @@ $data = [
 $stmt = $pdo->query('SELECT * FROM setting');
 foreach ($stmt as $result)
 {
-    $data['settings'][$result['SettingName']] = $result['SettingValue'];
+    $data['urlSettingss'][$result['SettingName']] = $result['SettingValue'];
 }
 return $data;
