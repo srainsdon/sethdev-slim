@@ -27,9 +27,11 @@ class user_management {
                             ["ip" => $this->ip]);
         }
     }
-function get_ip_addr() {
-    return $this->ip;
-}
+
+    function get_ip_addr() {
+        return $this->ip;
+    }
+
     function set_ip_addr() {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {   //check ip from share internet
             $ip = $_SERVER['HTTP_CLIENT_IP'];
