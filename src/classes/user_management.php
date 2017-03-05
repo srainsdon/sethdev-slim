@@ -11,7 +11,7 @@ class user_management {
     public $ip;
 
     // constructor receives container instance
-    public function __construct(ContainerInterface $container) {
+    public function __construct(Interop\Container\ContainerInterface $container) {
         $this->container = $container;
         $this->set_ip_addr();
     }
