@@ -9,20 +9,17 @@ $app->get('/settings',
 
 $app->get('/' . $route_settings['ItemPage'] . '/{id}',
         \item_controler::class . ':get_item')->setName('item');
-$app->get('/', function ($request, $response, $args) {
-        return $this->renderer->render($response, "index.phtml",
-                            ["test" => "test"]);
-    });
+$app->get('/',
+        function ($request, $response, $args) {
+    return $this->renderer->render($response, "index.phtml", ["test" => "test"]);
+});
 //$app->group('/v1', });
 
-    $app->group('/auth',
-            function () {
-        $this->map(['GET', 'POST'], '/login',
-                '\user_management:login');
-        $this->map(['GET', 'POST'], '/logout',
-                '\user_management:logout');
-        $this->map(['GET', 'POST'], '/signup',
-                '\user_management:signup');
-    });
-    
+$app->group('/auth',
+        function () {
+    $this->map(['GET', 'POST'], '/login', \user_management::class . ':login');
+    $this->map(['GET', 'POST'], '/logout', \user_management::class . ':logout');
+    $this->map(['GET', 'POST'], '/signup', \user_management::class . ':signup');
+});
+
 
