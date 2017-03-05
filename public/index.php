@@ -33,7 +33,7 @@ $container['logger'] = function($c) {
 $container['db'] = function ($c) {
     $db_creds = unserialize(getenv('sethdev_DB'));
     $pdo = new PDO("mysql:host=" . $db_creds['host'] . ";dbname=" . $db_creds['database'],
-            $db['user'], $db['pass']);
+            $db_creds['username'], $db_creds['password']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
