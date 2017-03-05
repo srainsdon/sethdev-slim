@@ -18,9 +18,9 @@ class user_management {
 
     public function login($request, $response, $args) {
         $data = $request->getParsedBody();
-        if ($request->isPost()) {
-            $username = $request->post('UserName');
-            $password = $request->post('Password');
+        if (isset($data['UserName'])) {
+            $username = $data['UserName'];
+            $password = $data['Password'];
             var_dump(array($username, $password));
         }
         else {
