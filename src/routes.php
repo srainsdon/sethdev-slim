@@ -21,7 +21,7 @@ $app->group('/v1',
         $this->map(['GET', 'POST'], '/signup',
                 'App\controllers\user_management:signup');
     });
-    $this->map(['GET'], '/', function ($request, $response, $args) {
+    $this->get('/', function ($request, $response, $args) {
         return $this->renderer->render($response, "index.phtml",
                             ["ip" => \userdata::getRealIpAddr()]);
     });
