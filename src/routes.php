@@ -9,7 +9,10 @@ $app->get('/settings',
 
 $app->get('/' . $route_settings['ItemPage'] . '/{id}',
         \item_controler::class . ':get_item')->setName('item');
-
+$app->get('/', function ($request, $response, $args) {
+        return $this->renderer->render($response, "index.phtml",
+                            ["ip" => \user_management::getRealIpAddr()]);
+    });
 $app->group('/v1',
         function () {
     $this->group('/auth',
@@ -21,8 +24,5 @@ $app->group('/v1',
         $this->map(['GET', 'POST'], '/signup',
                 'App\controllers\user_management:signup');
     });
-    $this->get('/', function ($request, $response, $args) {
-        return $this->renderer->render($response, "index.phtml",
-                            ["ip" => \user_management::getRealIpAddr()]);
-    });
+    
 });
