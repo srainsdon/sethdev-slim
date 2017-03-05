@@ -1,4 +1,5 @@
 <?php
+use Zend\Permissions\Acl\Acl as ZendAcl;
 
 class Acl extends ZendAcl {
 
@@ -13,8 +14,8 @@ class Acl extends ZendAcl {
         // APPLICATION RESOURCES
         // Application resources == Slim route patterns
         $this->addResource('/');
-        $this->addResource('/auth/login');
-        $this->addResource('/auth/logout');
+        $this->addResource('/login');
+        $this->addResource('/logout');
         $this->addResource('/member');
         $this->addResource('/admin');
 
