@@ -11,5 +11,5 @@ $app->get('/' . $route_settings['ItemPage'] . '/{id}',
         \item_controler::class . ':get_item')->setName('item');
 
 $app->get('/login', function ($request, $response, $args) {
-    $this->view->render($response, "login.phtml", ["ip" => \userdata::getRealIpAddr()]);
+    return $this->renderer->render($response, "login.phtml", ["ip" => \userdata::getRealIpAddr()]);
 })->setname('login-form');
