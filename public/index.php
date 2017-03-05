@@ -15,7 +15,7 @@ session_start();
 
 // Instantiate the app
 $settings = require __DIR__ . '/../src/settings.php';
-$settings['urlSettings'] = require_once __DIR__ . '/../src/db_settings.php';
+$settings('settings')['urlSettings'] = require_once __DIR__ . '/../src/db_settings.php';
 $app = new \Slim\App($settings);
 
 // Set up dependencies

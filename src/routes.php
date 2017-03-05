@@ -3,7 +3,7 @@
 // Routes
 
 $app->get('/settings', function ($request, $response, $args) {
-var_dump($app->get('urlSettings'));
+var_dump($app->get('settings')['urlSettings']);
 });
 
 $app->get('/[{name}]', function ($request, $response, $args) {
