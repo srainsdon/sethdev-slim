@@ -25,7 +25,7 @@ spl_autoload_register(function ($classname) {
     require (__DIR__ . '/../src/classes/' . $classname . '.php');
 });
 
-session_start();
+//session_start();
 
 // Instantiate the app
 $settings = require __DIR__ . '/../src/settings.php';
@@ -65,7 +65,7 @@ $container['routeSettings'] = function ($c) {
 // Configure Slim Auth components
 $validator = new PasswordValidator();
 $adapter = new PdoAdapter($container['db'], 'members', 'username', 'password', $validator);
-$acl = new \Example\Acl();
+$acl = new acl();
 $sessionConfig = new SessionConfig();
 $sessionConfig->setOptions(array(
     'remember_me_seconds' => 60 * 60 * 24 * 7,
