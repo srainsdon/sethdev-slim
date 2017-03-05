@@ -10,11 +10,19 @@ $app->get('/settings',
 $app->get('/' . $route_settings['ItemPage'] . '/{id}',
         \item_controler::class . ':get_item')->setName('item');
 
-$app->get('/login', function ($request, $response, $args) {
-    return $this->renderer->render($response, "login.phtml", ["ip" => \userdata::getRealIpAddr()]);
-})->setname('login-form');
-$app->post('/login', function ($request, $response, $args) {
-    $username = $request->post('UserName');
-    $password = $request->post('Password');
-    var_dump(array($username, $password));
-})->setname('login');
+$app->group('/v1',
+        function () {
+    $this->group('/auth',
+            function () {
+        $this->map(['GET', 'POST'], '/login',
+                'App\controllers\user_management:login');
+        $this->map(['GET', 'POST'], '/logout',
+                'App\controllers\user_management:logout');
+        $this->map(['GET', 'POST'], '/signup',
+                'App\controllers\user_management:signup');
+    });
+    $this->map('GET', '/', function ($request, $response, $args) {
+        return $this->renderer->render($response, "index.phtml",
+                            ["ip" => \userdata::getRealIpAddr()]);
+    });
+});

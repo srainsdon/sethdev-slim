@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Description of user_management
+ *
+ * @author srainsdon
+ */
+class user_management {
+
+    protected $container;
+    public $ip;
+
+    // constructor receives container instance
+    public function __construct(ContainerInterface $container) {
+        $this->container = $container;
+    }
+
+    function login($request, $response, $args) {
+        if ($request->isPost()) {
+            $username = $request->post('UserName');
+            $password = $request->post('Password');
+            var_dump(array($username, $password));
+        }
+        else {
+            return $this->renderer->render($response, "login.phtml",
+                            ["ip" => \userdata::getRealIpAddr()]);
+        }
+    }
+
+    function getIpAddr() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {   //check ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {   //to check ip is pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        $this->ip = $ip;
+        return $ip;
+    }
+
+}
