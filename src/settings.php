@@ -1,6 +1,6 @@
 <?php
 require_once 'db_settings.php';
-return [
+$data = [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
@@ -18,3 +18,10 @@ return [
         ],
     ],
 ];
+
+$stmt = $pdo->query('SELECT * FROM setting');
+foreach ($stmt as $result)
+{
+    $data['settings'][$result['SettingName']] = $result['SettingValue'];
+}
+return $data;
