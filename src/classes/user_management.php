@@ -24,7 +24,7 @@ class user_management {
         }
         else {
             return $this->renderer->render($response, "login.phtml",
-                            ["ip" => \userdata::getRealIpAddr()]);
+                            ["ip" => $this->ip]);
         }
     }
 
