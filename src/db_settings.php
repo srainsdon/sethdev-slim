@@ -1,7 +1,6 @@
 <?php
 
 $db_creds = unserialize(getenv('sethdev_DB'));
-
 $dsn = "mysql:host=" . $db_creds['host'] . ";dbname=" . $db_creds['database'] . ";charset=utf8";
 $opt = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

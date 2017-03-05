@@ -2,16 +2,16 @@
 
 // Routes
 
+$routeSettings = $app->routeSettings;
+
 $app->get('/settings',
         function ($request, $response, $args) {
-    var_dump($this->get('settings')['urlSettings']);
+    var_dump($routeSettings);
 });
 
-$app->get('/[{name}]',
+$app->get('/' . $routeSettings['ItemPage'] . '[{id}]',
         function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-    $test = "what";
+    
     // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+    return $this->renderer->render($response, 'item.phtml', $args);
 });
