@@ -16,6 +16,6 @@ $app->get('/' . $route_settings['ItemPage'] . '/[{id}]',
      $item_map = new item_mapper($this->db);
      $item = $item_map->get_item($item_id);
     // Render index view
-    var_dump($item);
-    //return $this->renderer->render($response, 'item.phtml', $item);
+    //var_dump($item);
+    return $this->renderer->render($response, 'item.phtml', $item);
 })->setName('item');
