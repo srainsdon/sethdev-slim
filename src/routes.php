@@ -9,9 +9,17 @@ $app->get('/settings',
 
 $app->get('/' . $route_settings['ItemPage'] . '/{id}',
         \item_controler::class . ':get_item')->setName('item');
-$app->get('/',
-        function ($request, $response, $args) {
-    return $this->renderer->render($response, "index.phtml", ["test" => "test"]);
+
+$app->get('/', function () use ($app) {
+    $readme = Parsedown::instance()->parse(
+        file_get_contents(dirname(__DIR__) . '/README.md')
+    );
+    $app->render('index.twig', array('readme' => $readme));
+});
+
+//$app->get('/',
+//        function ($request, $response, $args) {
+//    return $this->renderer->render($response, "index.phtml", ["test" => "test"]);
 });
 //$app->group('/v1', });
 
