@@ -16,3 +16,4 @@ foreach ($stmt as $result)
 {
     $urlSettings[$result['SettingName']] = $result['SettingValue'];
 }
+return $urlSettings;
