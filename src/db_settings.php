@@ -10,7 +10,7 @@ $opt = [
 ];
 $pdo = new PDO($dsn, $db_creds['username'], $db_creds['password'], $opt);
 
-$urlSettings[];
+$urlSettings = array();
 $stmt = $pdo->query('SELECT * FROM setting');
 foreach ($stmt as $result)
 {
