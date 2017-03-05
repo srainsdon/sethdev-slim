@@ -23,6 +23,6 @@ $app->group('/v1',
     });
     $this->get('/', function ($request, $response, $args) {
         return $this->renderer->render($response, "index.phtml",
-                            ["ip" => \userdata::getRealIpAddr()]);
+                            ["ip" => \user_management::getRealIpAddr()]);
     });
 });
