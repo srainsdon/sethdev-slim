@@ -16,7 +16,7 @@ class item_controler {
     protected $container;
 
     // constructor receives container instance
-    public function __construct(ContainerInterface $container) {
+    public function __construct(Interop\Container\ContainerInterface  $container) {
         $this->container = $container;
     }
 
