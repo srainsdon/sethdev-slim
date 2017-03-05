@@ -7,5 +7,5 @@ $app->get('/settings',
     var_dump($this->routeSettings);
 });
 
-$app->get('/' . $route_settings['ItemPage'] . '/[{id}]',
+$app->get('/' . $route_settings['ItemPage'] . '/{id}',
         \item_controler::class . ':get_item')->setName('item');
