@@ -18,15 +18,15 @@ class user_management {
 
     function login($request, $response, $args) {
         var_dump([$request, $response, $args]);
-        if ($request->isPost()) {
-            $username = $request->post('UserName');
-            $password = $request->post('Password');
-            var_dump(array($username, $password));
-        }
-        else {
+//        if ($request->isPost()) {
+//            $username = $request->post('UserName');
+//            $password = $request->post('Password');
+//            var_dump(array($username, $password));
+//        }
+//        else {
             return $this->container->renderer->render($response, "login.phtml",
                             ["ip" => $this->ip]);
-        }
+        //}
     }
 
     function get_ip_addr() {
