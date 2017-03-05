@@ -12,4 +12,4 @@ $app->get('/' . $route_settings['ItemPage'] . '/{id}',
 
 $app->get('/login', function() use ($app) {
     $app->render('login.html');
-})->name('login-form');
+})->setname('login-form');
