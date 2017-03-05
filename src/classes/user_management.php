@@ -13,6 +13,7 @@ class user_management {
     // constructor receives container instance
     public function __construct(ContainerInterface $container) {
         $this->container = $container;
+        $this->getIpAddr();
     }
 
     function login($request, $response, $args) {
