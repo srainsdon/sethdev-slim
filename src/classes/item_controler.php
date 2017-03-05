@@ -23,7 +23,7 @@ class item_controler {
     function get_item($request, $response, $args) {
         $item_id = (int) $args['id'];
         $this->container->logger->addInfo("Item: " . $item_id);
-        $stmt = $this->container->db->query('SELECT * FROM item where itemID = ' . $id);
+        $stmt = $this->container->db->query('SELECT * FROM item where itemID = ' . $item_id);
         $item = $stmt->fetch();
         $this->container->logger->addInfo($item);
         return $this->container->renderer->render($response, 'item.phtml', $item);
