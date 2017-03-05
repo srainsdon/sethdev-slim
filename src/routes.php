@@ -11,5 +11,5 @@ $app->get('/' . $route_settings['ItemPage'] . '/{id}',
         \item_controler::class . ':get_item')->setName('item');
 
 $app->get('/login', function ($request, $response, $args) {
-    $app->render('login.html');
+    $this->render('login.html');
 })->setname('login-form');
