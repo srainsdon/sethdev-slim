@@ -13,3 +13,8 @@ $app->get('/' . $route_settings['ItemPage'] . '/{id}',
 $app->get('/login', function ($request, $response, $args) {
     return $this->renderer->render($response, "login.phtml", ["ip" => \userdata::getRealIpAddr()]);
 })->setname('login-form');
+$app->post('/login', function ($request, $response, $args) {
+    $username = $request->post('UserName');
+    $password = $request->post('Password');
+    var_dump(array($username, $password));
+})->setname('login');
