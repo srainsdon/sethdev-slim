@@ -19,7 +19,8 @@
         "google/auth": "^0.4.0",
         "jeremykendall/slim-auth": "dev-slim-3.x",
         "twig/twig": "dev-master",
-        "jeremykendall/password-validator": "* 3.0.4"
+        "jeremykendall/password-validator": "* 3.0.4",
+        "zendframework/zend-eventmanager": "* 2.6.3"
     },
     "require-dev": {
         "phpunit/phpunit": ">=4.8 < 6.0"
