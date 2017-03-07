@@ -25,15 +25,6 @@ $app = new \Slim\App($settings);
 
 $container = $app->getContainer();
 
-// Logger config
-//$container['logger'] = function($c) {
-//    $logger = new \Monolog\Logger('my_logger');
-//    $file_handler = new \Monolog\Handler\StreamHandler("../logs/app.log");
-//    $logger->pushHandler($file_handler);
-//    return $logger;
-//};
-
-// DB config
 $container['db'] = function ($c) {
     $db_creds = unserialize(getenv('sethdev_DB'));
     $pdo = new PDO("mysql:host=" . $db_creds['host'] . ";dbname=" . $db_creds['database'],
@@ -51,12 +42,6 @@ $container['routeSettings'] = function ($c) {
     }
     return $urlSettings;
 };
-
-// Set up dependencies
-require __DIR__ . '/../src/dependencies.php';
-
-// Register middleware
-require __DIR__ . '/../src/middleware.php';
 
 // Register routes
 require __DIR__ . '/../src/routes.php';
