@@ -43,6 +43,8 @@ $container['routeSettings'] = function ($c) {
     return $urlSettings;
 };
 
+
+
 // Register routes
 require __DIR__ . '/../src/routes.php';
 
