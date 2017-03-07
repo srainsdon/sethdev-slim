@@ -22,7 +22,7 @@ $this->map(['GET', 'POST'], '/signup', \user_management::class . ':signup');
 });
 
 $app->group('/v1', function () {
-$this->map(['GET', 'POST'], '/appdump', \user_management::class . ':login');
+$this->map(['GET', 'POST'], '/appdump', nunet\helper::class . ':app_dump');
 );
 
 
